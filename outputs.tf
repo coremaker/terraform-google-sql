@@ -1,6 +1,6 @@
 # MySQL
 
-utput "mysql_instance_name" {
+output "mysql_instance_name" {
      value = var.mysql_enabled ? google_sql_database_instance.mysql.0.name : ""
 }
 
