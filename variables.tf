@@ -31,6 +31,36 @@ variable "mysql_database_version" {
     default = "MYSQL_5_7" # Mysql database version
 }
 
+# POSTGRES
+variable "postgres_enabled" {
+    type = bool
+    default = false # Enable and disable postgres
+}
+
+variable "postgres_private_network" {}
+
+variable "postgres_deletion_protection" {
+    type = bool
+    default = true
+}
+
+variable "postgres_instance_name" {
+    type = string
+    default = "dev"
+}
+
+variable "postgres_machine_type" {
+    default = "db-f1-micro"
+}
+
+variable "postgres_disk_size" {
+    default = "10"
+}
+
+variable "postgres_database_version" {
+    default = "POSTGRES_11" # Postgres version
+}
+
 # GCP SQL alerts
 variable "enable_sql_alerts" {
     type = bool
