@@ -1,12 +1,12 @@
 resource "google_sql_user" "mysql_root_user" {
   count      = var.mysql_enabled ? 1 : 0
 
-  instance = google_sql_database_instance.mysql_db.0.name
+  instance = google_sql_database_instance.mysql.0.name
 
   name     = "root"
   password = random_password.mysql_root_user_pass.0.result
 
-  depends_on = [google_sql_database_instance.mysql_db]
+  depends_on = [google_sql_database_instance.mysql]
 }
 
 resource "google_sql_database_instance" "mysql" {
