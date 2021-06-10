@@ -4,7 +4,9 @@ variable "mysql_enabled" {
     default = false # Enable and disable mysql
 }
 
-variable "mysql_private_network" {}
+variable "mysql_private_network" {
+    default = ""
+}
 
 variable "mysql_deletion_protection" {
     type = bool
@@ -37,7 +39,9 @@ variable "postgres_enabled" {
     default = false # Enable and disable postgres
 }
 
-variable "postgres_private_network" {}
+variable "postgres_private_network" {
+    default = ""
+}
 
 variable "postgres_deletion_protection" {
     type = bool
