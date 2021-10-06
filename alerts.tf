@@ -43,7 +43,7 @@ EOT
     }
   }
   conditions {
-    display_name = "SQL, instance reached ${var.sql_cpu_events_threshold_value} MEMORY usage"
+    display_name = "SQL, instance reached ${var.sql_memory_events_threshold_value} MEMORY usage"
     condition_threshold {
       filter          = <<EOT
 metric.type="cloudsql.googleapis.com/database/memory/utilization" AND
