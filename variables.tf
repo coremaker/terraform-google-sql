@@ -59,6 +59,11 @@ variable "postgres_enabled" {
     default = false # Enable and disable postgres
 }
 
+variable "postgres_ip_configuration_ipv4_enabled" {
+    type = bool
+    default = true
+}
+
 variable "postgres_private_network" {
     default = ""
 }
@@ -75,6 +80,11 @@ variable "postgres_instance_name" {
 
 variable "postgres_machine_type" {
     default = "db-f1-micro"
+}
+
+variable "postgres_availability_type" {
+    type = string
+    default = "ZONAL"
 }
 
 variable "postgres_disk_size" {
