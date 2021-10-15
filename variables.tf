@@ -8,9 +8,14 @@ variable "mysql_private_network" {
     default = ""
 }
 
-variable "mysql_deletion_protection" {
+variable "mysql_ip_configuration_ipv4_enabled" {
     type = bool
     default = true
+}
+
+variable "mysql_deletion_protection" {
+    type = bool
+    default = false
 }
 
 variable "mysql_instance_name" {
@@ -21,6 +26,21 @@ variable "mysql_instance_name" {
 variable "mysql_machine_type" {
     type = string
     default = "db-f1-micro"
+}
+
+variable "mysql_availability_type" {
+    type = string
+    default = "ZONAL"
+}
+
+variable "mysql_backup_configuration_enabled" {
+    type = bool
+    default = true
+}
+
+variable "mysql_backup_configuration_binary_log_enabled" {
+    type = bool
+    default = true
 }
 
 variable "mysql_disk_size" {
@@ -39,6 +59,11 @@ variable "postgres_enabled" {
     default = false # Enable and disable postgres
 }
 
+variable "postgres_ip_configuration_ipv4_enabled" {
+    type = bool
+    default = true
+}
+
 variable "postgres_private_network" {
     default = ""
 }
@@ -55,6 +80,11 @@ variable "postgres_instance_name" {
 
 variable "postgres_machine_type" {
     default = "db-f1-micro"
+}
+
+variable "postgres_availability_type" {
+    type = string
+    default = "ZONAL"
 }
 
 variable "postgres_disk_size" {
