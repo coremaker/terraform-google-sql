@@ -19,14 +19,16 @@ resource "google_sql_database_instance" "mysql" {
   settings {
     tier = var.mysql_machine_type
     disk_size = var.mysql_disk_size
+    availability_type = var.mysql_availability_type
 
     ip_configuration {
-      ipv4_enabled = "true"
+      ipv4_enabled = var.mysql_ip_configuration_ipv4_enabled
       private_network = var.mysql_private_network
     }
 
     backup_configuration  {
-      enabled = true
+      enabled = var.mysql_backup_configuration_enabled
+      binary_log_enabled = var.mysql_backup_configuration_binary_log_enabled
       start_time = "02:39"
     }
   }
