@@ -53,6 +53,14 @@ variable "mysql_database_version" {
     default = "MYSQL_5_7" # Mysql database version
 }
 
+variable "mysql_database_flags" {
+    type    = list(object({
+        name = string
+        value = string
+    }))
+    default = []
+}
+
 # POSTGRES
 variable "postgres_enabled" {
     type = bool
