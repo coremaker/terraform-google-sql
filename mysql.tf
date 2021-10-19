@@ -31,6 +31,14 @@ resource "google_sql_database_instance" "mysql" {
       binary_log_enabled = var.mysql_backup_configuration_binary_log_enabled
       start_time = "02:39"
     }
+
+    dynamic "database_flags" {
+      for_each = var.mysql_database_flags
+      content {
+        name = database_flags.value.name
+        value = database_flags.value.value
+      }
+    }
   }
 
   lifecycle {

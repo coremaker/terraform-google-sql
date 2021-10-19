@@ -15,7 +15,7 @@ variable "mysql_ip_configuration_ipv4_enabled" {
 
 variable "mysql_deletion_protection" {
     type = bool
-    default = false
+    default = true
 }
 
 variable "mysql_instance_name" {
@@ -51,6 +51,14 @@ variable "mysql_disk_size" {
 variable "mysql_database_version" {
     type = string
     default = "MYSQL_5_7" # Mysql database version
+}
+
+variable "mysql_database_flags" {
+    type    = list(object({
+        name = string
+        value = string
+    }))
+    default = []
 }
 
 # POSTGRES
@@ -95,6 +103,13 @@ variable "postgres_database_version" {
     default = "POSTGRES_11" # Postgres version
 }
 
+variable "postgres_database_flags" {
+    type    = list(object({
+        name = string
+        value = string
+    }))
+    default = []
+}
 # GCP SQL alerts
 variable "enable_sql_alerts" {
     type = bool
