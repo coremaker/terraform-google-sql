@@ -30,6 +30,14 @@ resource "google_sql_database_instance" "postgres" {
       enabled = true
       start_time = "02:39"
     }
+
+    dynamic "database_flags" {
+      for_each = var.postgres_database_flags
+      content {
+        name = database_flags.value.name
+        value = database_flags.value.value
+      }
+    }
   }
 
   lifecycle {
