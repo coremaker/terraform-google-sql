@@ -39,7 +39,4 @@ resource "random_password" "postgres_root_user_pass" {
   length = 24
   special = var.postgres_random_password_special_chars
 
-  lifecycle {
-    ignore_changes = all
-  }
 }
