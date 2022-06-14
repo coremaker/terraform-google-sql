@@ -61,6 +61,11 @@ variable "mysql_database_flags" {
     default = []
 }
 
+variable "mysql_random_password_special_chars" {
+    type = bool
+    default = true
+}
+
 # POSTGRES
 variable "postgres_enabled" {
     type = bool
@@ -110,6 +115,12 @@ variable "postgres_database_flags" {
     }))
     default = []
 }
+
+variable "postgres_random_password_special_chars" {
+    type = bool
+    default = true
+}
+
 # GCP SQL alerts
 variable "enable_sql_alerts" {
     type = bool
