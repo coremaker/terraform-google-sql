@@ -116,7 +116,7 @@ variable "postgres_database_flags" {
     default = []
 }
 
-variable "postgres_random_password_password_special_chars" {
+variable "postgres_random_password_special_chars" {
     type = bool
     default = true
 }
