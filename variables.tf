@@ -61,6 +61,14 @@ variable "mysql_database_flags" {
     default = []
 }
 
+variable "mysql_authorized_networks" {
+    type    = list(object({
+        name = string
+        value = string
+    }))
+    default = []
+}
+
 variable "mysql_random_password_special_chars" {
     type = bool
     default = true
@@ -109,6 +117,14 @@ variable "postgres_database_version" {
 }
 
 variable "postgres_database_flags" {
+    type    = list(object({
+        name = string
+        value = string
+    }))
+    default = []
+}
+
+variable "postgres_authorized_networks" {
     type    = list(object({
         name = string
         value = string
