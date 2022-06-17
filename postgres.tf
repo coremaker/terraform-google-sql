@@ -22,6 +22,14 @@ resource "google_sql_database_instance" "postgres" {
     availability_type = var.postgres_availability_type
 
     ip_configuration {
+      dynamic "authorized_networks" {
+        for_each = var.postgres_authorized_networks
+
+        content {
+          name  = authorized_networks.value.name
+          value = authorized_networks.value.value
+        }
+      }
       ipv4_enabled = var.postgres_ip_configuration_ipv4_enabled
       private_network = var.postgres_private_network
     }

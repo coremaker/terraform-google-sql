@@ -22,6 +22,14 @@ resource "google_sql_database_instance" "mysql" {
     availability_type = var.mysql_availability_type
 
     ip_configuration {
+      dynamic "authorized_networks" {
+        for_each = var.mysql_authorized_networks
+
+        content {
+          name  = authorized_networks.value.name
+          value = authorized_networks.value.value
+        }
+      }
       ipv4_enabled = var.mysql_ip_configuration_ipv4_enabled
       private_network = var.mysql_private_network
     }
