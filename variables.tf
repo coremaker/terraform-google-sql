@@ -1,59 +1,53 @@
-# MYSQL
-variable "mysql_enabled" {
-    type = bool
-    default = false # Enable and disable mysql
-}
-
-variable "mysql_private_network" {
+variable "private_network" {
     default = ""
 }
 
-variable "mysql_ip_configuration_ipv4_enabled" {
+variable "ip_configuration_ipv4_enabled" {
     type = bool
     default = true
 }
 
-variable "mysql_deletion_protection" {
+variable "deletion_protection" {
     type = bool
     default = true
 }
 
-variable "mysql_instance_name" {
+variable "instance_name" {
     type = string
     default = "dev"
 }
 
-variable "mysql_machine_type" {
+variable "machine_type" {
     type = string
     default = "db-f1-micro"
 }
 
-variable "mysql_availability_type" {
+variable "availability_type" {
     type = string
     default = "ZONAL"
 }
 
-variable "mysql_backup_configuration_enabled" {
+variable "backup_configuration_enabled" {
     type = bool
     default = true
 }
 
-variable "mysql_backup_configuration_binary_log_enabled" {
+variable "backup_configuration_binary_log_enabled" {
     type = bool
     default = true
 }
 
-variable "mysql_disk_size" {
+variable "disk_size" {
     type = number
     default = 10
 }
 
-variable "mysql_database_version" {
+variable "database_version" {
     type = string
-    default = "MYSQL_5_7" # Mysql database version
+    default = "POSTGRES_11" # database version ex: MYSQL_5_7
 }
 
-variable "mysql_database_flags" {
+variable "database_flags" {
     type    = list(object({
         name = string
         value = string
@@ -61,7 +55,7 @@ variable "mysql_database_flags" {
     default = []
 }
 
-variable "mysql_authorized_networks" {
+variable "authorized_networks" {
     type    = list(object({
         name = string
         value = string
@@ -69,110 +63,27 @@ variable "mysql_authorized_networks" {
     default = []
 }
 
-variable "mysql_query_insights_enabled" {
+variable "query_insights_enabled" {
     type = bool
     default = false
 }
 
-variable "mysql_query_string_length" {
+variable "query_string_length" {
     type = number
     default = 1024
 }
 
-variable "mysql_record_application_tags" {
+variable "record_application_tags" {
     type = bool
     default = false
 }
 
-variable "mysql_record_client_address" {
+variable "record_client_address" {
     type = bool
     default = false
 }
 
-variable "mysql_random_password_special_chars" {
-    type = bool
-    default = true
-}
-
-# POSTGRES
-variable "postgres_enabled" {
-    type = bool
-    default = false # Enable and disable postgres
-}
-
-variable "postgres_ip_configuration_ipv4_enabled" {
-    type = bool
-    default = true
-}
-
-variable "postgres_private_network" {
-    default = ""
-}
-
-variable "postgres_deletion_protection" {
-    type = bool
-    default = true
-}
-
-variable "postgres_instance_name" {
-    type = string
-    default = "dev"
-}
-
-variable "postgres_machine_type" {
-    default = "db-f1-micro"
-}
-
-variable "postgres_availability_type" {
-    type = string
-    default = "ZONAL"
-}
-
-variable "postgres_disk_size" {
-    default = "10"
-}
-
-variable "postgres_database_version" {
-    default = "POSTGRES_11" # Postgres version
-}
-
-variable "postgres_database_flags" {
-    type    = list(object({
-        name = string
-        value = string
-    }))
-    default = []
-}
-
-variable "postgres_authorized_networks" {
-    type    = list(object({
-        name = string
-        value = string
-    }))
-    default = []
-}
-
-variable "postgres_query_insights_enabled" {
-    type = bool
-    default = false
-}
-
-variable "postgres_query_string_length" {
-    type = number
-    default = 1024
-}
-
-variable "postgres_record_application_tags" {
-    type = bool
-    default = false
-}
-
-variable "postgres_record_client_address" {
-    type = bool
-    default = false
-}
-
-variable "postgres_random_password_special_chars" {
+variable "random_password_special_chars" {
     type = bool
     default = true
 }
