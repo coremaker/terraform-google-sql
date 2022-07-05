@@ -34,7 +34,7 @@ variable "backup_configuration_enabled" {
 
 variable "backup_configuration_binary_log_enabled" {
     type = bool
-    default = true
+    default = false # Only for MYSQL
 }
 
 variable "disk_size" {
