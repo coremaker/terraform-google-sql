@@ -48,10 +48,10 @@ resource "google_sql_database_instance" "postgres" {
     }
 
     insights_config {
-      query_insights_enabled = var.query_insights_enabled
-      query_string_length = var.query_string_length
-      record_application_tags = var.record_application_tags
-      record_client_address = var.record_client_address
+      query_insights_enabled = var.postgres_query_insights_enabled
+      query_string_length = var.postgres_query_string_length
+      record_application_tags = var.postgres_record_application_tags
+      record_client_address = var.postgres_record_client_address
     }
   }
 
