@@ -69,6 +69,26 @@ variable "mysql_authorized_networks" {
     default = []
 }
 
+variable "query_insights_enabled" {
+    type = bool
+    default = false
+}
+
+variable "query_string_length" {
+    type = number
+    default = 1024
+}
+
+variable "record_application_tags" {
+    type = bool
+    default = false
+}
+
+variable "record_client_address" {
+    type = bool
+    default = false
+}
+
 variable "mysql_random_password_special_chars" {
     type = bool
     default = true
@@ -130,6 +150,26 @@ variable "postgres_authorized_networks" {
         value = string
     }))
     default = []
+}
+
+variable "query_insights_enabled" {
+    type = bool
+    default = false
+}
+
+variable "query_string_length" {
+    type = number
+    default = 1024
+}
+
+variable "record_application_tags" {
+    type = bool
+    default = false
+}
+
+variable "record_client_address" {
+    type = bool
+    default = false
 }
 
 variable "postgres_random_password_special_chars" {
