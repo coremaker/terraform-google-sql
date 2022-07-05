@@ -47,6 +47,13 @@ resource "google_sql_database_instance" "mysql" {
         value = database_flags.value.value
       }
     }
+
+    insights_config {
+      query_insights_enabled = var.mysql_query_insights_enabled
+      query_string_length = var.mysql_query_string_length
+      record_application_tags = var.mysql_record_application_tags
+      record_client_address = var.mysql_record_client_address
+    }
   }
 
   lifecycle {
