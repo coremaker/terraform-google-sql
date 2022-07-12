@@ -7,16 +7,11 @@ This is a terraform module for GCP SQL which helps you build a sql instance with
 # Outputs
 All outputs are marked as sensitive and will not be shown on terraform plans.
 
-* mysql_instance_name
-* mysql_connection_name
-* mysql_private_ip_address
-* mysql_public_ip_address
-* mysql_root_password
-* postgres_instance_name
-* postgres_connection_name
-* postgres_private_ip_address
-* postgres_public_ip_address
-* postgres_root_password
+* instance_name
+* connection_name
+* private_ip_address
+* public_ip_address
+* root_password
 
 # Examples
 
@@ -24,9 +19,8 @@ All outputs are marked as sensitive and will not be shown on terraform plans.
 module "sql" {
     source = "github.com/coremaker/terraform-google-sql.git?ref=first-commit"
 
-    mysql_private_network = google_compute_network.vpc.self_link
-    mysql_instance_name = "dev"
-    mysql_enabled = true
+    private_network = google_compute_network.vpc.self_link
+    instance_name = "dev"
 
     slack_auth_token = << token >>
 }
@@ -37,15 +31,15 @@ resource "google_compute_network" "vpc" {
   auto_create_subnetworks = false
 }
 
-resource "kubernetes_secret" "mysql_root_user_secret" {
+resource "kubernetes_secret" "root_user_secret" {
     metadata {
-        name = "mysql-root"
+        name = "root"
         namespace = "coremaker"
     }
 
     data = {
         username = "root"
-        password = module.sql.mysql_root_password
+        password = module.sql.root_password
     }
 }
 ```
