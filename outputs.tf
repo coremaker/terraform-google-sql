@@ -7,6 +7,11 @@ output "connection_name" {
     sensitive = true
 }
 
+output "service_account_email" {
+    value = google_sql_database_instance.main.service_account_email_address
+    sensitive = true
+}
+
 output "private_ip_address" {
     value = google_sql_database_instance.main.private_ip_address
     sensitive   = true
