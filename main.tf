@@ -3,13 +3,13 @@ resource "google_project_service" "sqladmin" {
 }
 
 resource "google_sql_database_instance" "main" {
-  name             = "${var.instance_name}-${random_string.db_name.result}"
-  database_version = var.database_version
+  name                = "${var.instance_name}-${random_string.db_name.result}"
+  database_version    = var.database_version
   deletion_protection = var.deletion_protection
 
   settings {
-    tier = var.machine_type
-    disk_size = var.disk_size
+    tier              = var.machine_type
+    disk_size         = var.disk_size
     availability_type = var.availability_type
 
     ip_configuration {
@@ -21,20 +21,20 @@ resource "google_sql_database_instance" "main" {
           value = authorized_networks.value.value
         }
       }
-      ipv4_enabled = var.ip_configuration_ipv4_enabled
+      ipv4_enabled    = var.ip_configuration_ipv4_enabled
       private_network = var.private_network
     }
 
-    backup_configuration  {
-      enabled = var.backup_configuration_enabled
+    backup_configuration {
+      enabled            = var.backup_configuration_enabled
       binary_log_enabled = var.backup_configuration_binary_log_enabled
-      start_time = "02:39"
+      start_time         = "02:39"
     }
 
     dynamic "database_flags" {
       for_each = var.database_flags
       content {
-        name = database_flags.value.name
+        name  = database_flags.value.name
         value = database_flags.value.value
       }
     }
@@ -42,19 +42,19 @@ resource "google_sql_database_instance" "main" {
     dynamic "insights_config" {
       for_each = var.query_insights_enabled ? [1] : []
       content {
-        query_insights_enabled = var.query_insights_enabled
-        query_string_length = var.query_string_length
+        query_insights_enabled  = var.query_insights_enabled
+        query_string_length     = var.query_string_length
         record_application_tags = var.record_application_tags
-        record_client_address = var.record_client_address
+        record_client_address   = var.record_client_address
       }
     }
   }
 
   lifecycle {
     ignore_changes = [
-        project,
-        region,
-        settings.0.disk_size
+      project,
+      region,
+      settings.0.disk_size
     ]
   }
 
