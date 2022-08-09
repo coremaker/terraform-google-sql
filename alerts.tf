@@ -3,7 +3,7 @@ resource "google_monitoring_alert_policy" "sql_events" {
 
   display_name = "SQL Alert"
 
-  combiner     = "OR"
+  combiner              = "OR"
   notification_channels = var.sql_alerts_type == "slack" ? [google_monitoring_notification_channel.sql_slack_channel.0.name] : google_monitoring_notification_channel.sql_email_channel.*.id
 
   conditions {
@@ -17,11 +17,11 @@ EOT
       threshold_value = var.sql_disk_events_threshold_value
       comparison      = "COMPARISON_GT"
       aggregations {
-          alignment_period   = "60s"
-          per_series_aligner = "ALIGN_MAX"
-          cross_series_reducer = "REDUCE_MEAN"
-          group_by_fields = ["project", "resource.label.database_id"]
-       }
+        alignment_period     = "60s"
+        per_series_aligner   = "ALIGN_MAX"
+        cross_series_reducer = "REDUCE_MEAN"
+        group_by_fields      = ["project", "resource.label.database_id"]
+      }
     }
   }
   conditions {
@@ -35,11 +35,11 @@ EOT
       threshold_value = var.sql_cpu_events_threshold_value
       comparison      = "COMPARISON_GT"
       aggregations {
-          alignment_period   = "60s"
-          per_series_aligner = "ALIGN_MAX"
-          cross_series_reducer = "REDUCE_MEAN"
-          group_by_fields = ["project", "resource.label.database_id"]
-       }
+        alignment_period     = "60s"
+        per_series_aligner   = "ALIGN_MAX"
+        cross_series_reducer = "REDUCE_MEAN"
+        group_by_fields      = ["project", "resource.label.database_id"]
+      }
     }
   }
   conditions {
@@ -53,11 +53,11 @@ EOT
       threshold_value = var.sql_memory_events_threshold_value
       comparison      = "COMPARISON_GT"
       aggregations {
-          alignment_period   = "60s"
-          per_series_aligner = "ALIGN_MAX"
-          cross_series_reducer = "REDUCE_MEAN"
-          group_by_fields = ["project", "resource.label.database_id"]
-       }
+        alignment_period     = "60s"
+        per_series_aligner   = "ALIGN_MAX"
+        cross_series_reducer = "REDUCE_MEAN"
+        group_by_fields      = ["project", "resource.label.database_id"]
+      }
     }
   }
   lifecycle {
@@ -69,7 +69,7 @@ resource "google_monitoring_notification_channel" "sql_slack_channel" {
   count = var.enable_sql_alerts && var.sql_alerts_type == "slack" ? 1 : 0
 
   display_name = "SQL Slack Alert"
-  type = "slack"
+  type         = "slack"
   labels = {
     channel_name = var.sql_alerts_slack_channel_name
   }
