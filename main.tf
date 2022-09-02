@@ -6,10 +6,10 @@ resource "google_sql_database_instance" "main" {
   name                 = "${var.instance_name}-${random_string.db_name.result}"
   database_version     = var.database_version
   deletion_protection  = var.deletion_protection
-  master_instance_name = var.create_read_replica ? var.master_instance_name : null
+  master_instance_name = var.master_instance_name != "" ? var.master_instance_name : null
 
   dynamic "replica_configuration" {
-    for_each = var.create_read_replica ? [1] : []
+    for_each = var.master_instance_name != "" ? [1] : []
 
     content {
       failover_target = var.replica_failover_target
@@ -35,7 +35,7 @@ resource "google_sql_database_instance" "main" {
     }
 
     dynamic "backup_configuration" {
-      for_each = var.backup_configuration_enabled ? [1] : []
+      for_each = var.master_instance_name == "" ? [1] : []
       content {
         enabled            = var.backup_configuration_enabled
         binary_log_enabled = var.backup_configuration_binary_log_enabled
@@ -79,7 +79,8 @@ resource "google_sql_database_instance" "main" {
 
 
 resource "google_sql_user" "root_user" {
-  count    = var.create_read_replica ? 0 : 1
+  count    = var.master_instance_name != "" ? 0 : 1
+
   instance = google_sql_database_instance.main.name
 
   name     = "root"

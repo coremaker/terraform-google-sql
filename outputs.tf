@@ -23,6 +23,6 @@ output "public_ip_address" {
 }
 
 output "root_password" {
-  value     = var.create_read_replica ? "" : google_sql_user.root_user.0.password
+  value     = var.master_instance_name != "" ? "" : google_sql_user.root_user.0.password
   sensitive = true
 }
