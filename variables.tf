@@ -145,3 +145,19 @@ variable "sql_memory_events_alert_policy_threshold_duration" {
   type    = string
   default = "900s"
 }
+
+# read replica
+variable "create_read_replica" {
+  type  = bool
+  default = false
+}
+
+variable "master_instance_name" {
+  type = string
+  default = ""
+}
+
+variable "replica_failover_target" {
+  type = bool
+  default = false
+}
