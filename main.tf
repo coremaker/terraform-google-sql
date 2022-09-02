@@ -3,22 +3,18 @@ resource "google_project_service" "sqladmin" {
 }
 
 resource "google_sql_database_instance" "main" {
-  name                = "${var.instance_name}-${random_string.db_name.result}"
-  database_version    = var.database_version
-  deletion_protection = var.deletion_protection
+  name                 = "${var.instance_name}-${random_string.db_name.result}"
+  database_version     = var.database_version
+  deletion_protection  = var.deletion_protection
   master_instance_name = var.create_read_replica ? var.master_instance_name : null
 
   dynamic "replica_configuration" {
     for_each = var.create_read_replica ? [1] : []
 
-      content {
-        failover_target = var.replica_failover_target
-      }
+    content {
+      failover_target = var.replica_failover_target
+    }
   }
-
-  # replica_configuration {
-  #   failover_target = false
-  # }
 
   settings {
     tier              = var.machine_type
@@ -38,19 +34,13 @@ resource "google_sql_database_instance" "main" {
       private_network = var.private_network
     }
 
-    # backup_configuration {
-    #   enabled            = var.backup_configuration_enabled
-    #   binary_log_enabled = var.backup_configuration_binary_log_enabled
-    #   start_time         = "02:39"
-    # }
-
     dynamic "backup_configuration" {
       for_each = var.backup_configuration_enabled ? [1] : []
-        content {
-          enabled            = var.backup_configuration_enabled
-          binary_log_enabled = var.backup_configuration_binary_log_enabled
-          start_time         = "02:39"
-        }
+      content {
+        enabled            = var.backup_configuration_enabled
+        binary_log_enabled = var.backup_configuration_binary_log_enabled
+        start_time         = "02:39"
+      }
     }
 
     dynamic "database_flags" {
@@ -89,7 +79,7 @@ resource "google_sql_database_instance" "main" {
 
 
 resource "google_sql_user" "root_user" {
-  count = var.create_read_replica ? 0 : 1
+  count    = var.create_read_replica ? 0 : 1
   instance = google_sql_database_instance.main.name
 
   name     = "root"
