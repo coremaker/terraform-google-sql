@@ -66,7 +66,7 @@ resource "google_sql_database_instance" "main" {
     ignore_changes = [
       project,
       region,
-      settings.0.disk_size
+      settings[0].disk_size
     ]
   }
 
@@ -79,7 +79,7 @@ resource "google_sql_database_instance" "main" {
 
 
 resource "google_sql_user" "root_user" {
-  count    = var.master_instance_name != "" ? 0 : 1
+  count = var.master_instance_name != "" ? 0 : 1
 
   instance = google_sql_database_instance.main.name
 
