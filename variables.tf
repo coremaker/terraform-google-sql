@@ -34,7 +34,7 @@ variable "backup_configuration_enabled" {
 }
 
 variable "backup_configuration_location" {
-  type = string
+  type    = string
   default = "eu"
 }
 
@@ -90,17 +90,17 @@ variable "record_client_address" {
 }
 
 variable "maintenance_window_day" {
-  type = number
+  type    = number
   default = 0
 }
 
 variable "maintenance_window_hour" {
-  type = number
+  type    = number
   default = 0
 }
 
 variable "maintenance_window_update_track" {
-  type = string
+  type    = string
   default = ""
 }
 
