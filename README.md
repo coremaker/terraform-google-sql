@@ -44,8 +44,8 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 4.34.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.4.1 |
+| <a name="provider_google"></a> [google](#provider\_google) | 4.39.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
 
 ## Modules
 
@@ -72,7 +72,7 @@ No modules.
 | <a name="input_availability_type"></a> [availability\_type](#input\_availability\_type) | n/a | `string` | `"ZONAL"` | no |
 | <a name="input_backup_configuration_binary_log_enabled"></a> [backup\_configuration\_binary\_log\_enabled](#input\_backup\_configuration\_binary\_log\_enabled) | n/a | `bool` | `false` | no |
 | <a name="input_backup_configuration_enabled"></a> [backup\_configuration\_enabled](#input\_backup\_configuration\_enabled) | n/a | `bool` | `true` | no |
-| <a name="input_create_read_replica"></a> [create\_read\_replica](#input\_create\_read\_replica) | read replica | `bool` | `false` | no |
+| <a name="input_backup_configuration_location"></a> [backup\_configuration\_location](#input\_backup\_configuration\_location) | n/a | `string` | `"eu"` | no |
 | <a name="input_database_flags"></a> [database\_flags](#input\_database\_flags) | n/a | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `[]` | no |
 | <a name="input_database_version"></a> [database\_version](#input\_database\_version) | n/a | `string` | `"POSTGRES_11"` | no |
 | <a name="input_deletion_protection"></a> [deletion\_protection](#input\_deletion\_protection) | n/a | `bool` | `true` | no |
@@ -81,7 +81,10 @@ No modules.
 | <a name="input_instance_name"></a> [instance\_name](#input\_instance\_name) | n/a | `string` | `"dev"` | no |
 | <a name="input_ip_configuration_ipv4_enabled"></a> [ip\_configuration\_ipv4\_enabled](#input\_ip\_configuration\_ipv4\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | n/a | `string` | `"db-f1-micro"` | no |
-| <a name="input_master_instance_name"></a> [master\_instance\_name](#input\_master\_instance\_name) | n/a | `string` | `""` | no |
+| <a name="input_maintenance_window_day"></a> [maintenance\_window\_day](#input\_maintenance\_window\_day) | n/a | `number` | `0` | no |
+| <a name="input_maintenance_window_hour"></a> [maintenance\_window\_hour](#input\_maintenance\_window\_hour) | n/a | `number` | `0` | no |
+| <a name="input_maintenance_window_update_track"></a> [maintenance\_window\_update\_track](#input\_maintenance\_window\_update\_track) | n/a | `string` | `""` | no |
+| <a name="input_master_instance_name"></a> [master\_instance\_name](#input\_master\_instance\_name) | read replica | `string` | `""` | no |
 | <a name="input_private_network"></a> [private\_network](#input\_private\_network) | n/a | `string` | `""` | no |
 | <a name="input_query_insights_enabled"></a> [query\_insights\_enabled](#input\_query\_insights\_enabled) | n/a | `bool` | `false` | no |
 | <a name="input_query_string_length"></a> [query\_string\_length](#input\_query\_string\_length) | n/a | `number` | `1024` | no |

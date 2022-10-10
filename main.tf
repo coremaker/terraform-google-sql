@@ -38,6 +38,7 @@ resource "google_sql_database_instance" "main" {
       for_each = var.master_instance_name == "" ? [1] : []
       content {
         enabled            = var.backup_configuration_enabled
+        location           = var.backup_configuration_location
         binary_log_enabled = var.backup_configuration_binary_log_enabled
         start_time         = "02:39"
       }
@@ -60,6 +61,12 @@ resource "google_sql_database_instance" "main" {
         record_client_address   = var.record_client_address
       }
     }
+
+    maintenance_window {
+      day          = var.maintenance_window_day
+      hour         = var.maintenance_window_hour
+      update_track = var.maintenance_window_update_track
+    }
   }
 
   lifecycle {
@@ -79,7 +86,7 @@ resource "google_sql_database_instance" "main" {
 
 
 resource "google_sql_user" "root_user" {
-  count    = var.master_instance_name != "" ? 0 : 1
+  count = var.master_instance_name != "" ? 0 : 1
 
   instance = google_sql_database_instance.main.name
 
