@@ -33,6 +33,11 @@ variable "backup_configuration_enabled" {
   default = true
 }
 
+variable "backup_configuration_location" {
+  type    = string
+  default = "eu"
+}
+
 variable "backup_configuration_binary_log_enabled" {
   type    = bool
   default = false # Only for MYSQL
@@ -82,6 +87,21 @@ variable "record_application_tags" {
 variable "record_client_address" {
   type    = bool
   default = false
+}
+
+variable "maintenance_window_day" {
+  type    = number
+  default = 0
+}
+
+variable "maintenance_window_hour" {
+  type    = number
+  default = 0
+}
+
+variable "maintenance_window_update_track" {
+  type    = string
+  default = ""
 }
 
 variable "random_password_special_chars" {
