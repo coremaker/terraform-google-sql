@@ -32,6 +32,8 @@ resource "google_sql_database_instance" "main" {
       }
       ipv4_enabled    = var.ip_configuration_ipv4_enabled
       private_network = var.private_network
+      require_ssl     = var.require_ssl
+      ssl_mode        = var.ssl_mode
     }
 
     dynamic "backup_configuration" {

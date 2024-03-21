@@ -44,8 +44,8 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 4.31.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.3.2 |
+| <a name="provider_google"></a> [google](#provider\_google) | 5.21.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.6.0 |
 
 ## Modules
 
@@ -92,6 +92,7 @@ No modules.
 | <a name="input_record_application_tags"></a> [record\_application\_tags](#input\_record\_application\_tags) | n/a | `bool` | `false` | no |
 | <a name="input_record_client_address"></a> [record\_client\_address](#input\_record\_client\_address) | n/a | `bool` | `false` | no |
 | <a name="input_replica_failover_target"></a> [replica\_failover\_target](#input\_replica\_failover\_target) | n/a | `bool` | `false` | no |
+| <a name="input_require_ssl"></a> [require\_ssl](#input\_require\_ssl) | n/a | `bool` | `false` | no |
 | <a name="input_slack_auth_token"></a> [slack\_auth\_token](#input\_slack\_auth\_token) | n/a | `string` | `"token"` | no |
 | <a name="input_sql_alerts_email_address"></a> [sql\_alerts\_email\_address](#input\_sql\_alerts\_email\_address) | n/a | `list(string)` | <pre>[<br>  "address@example.com"<br>]</pre> | no |
 | <a name="input_sql_alerts_slack_channel_name"></a> [sql\_alerts\_slack\_channel\_name](#input\_sql\_alerts\_slack\_channel\_name) | n/a | `string` | `"sql-alerts"` | no |
@@ -102,6 +103,7 @@ No modules.
 | <a name="input_sql_disk_events_threshold_value"></a> [sql\_disk\_events\_threshold\_value](#input\_sql\_disk\_events\_threshold\_value) | n/a | `number` | `0.75` | no |
 | <a name="input_sql_memory_events_alert_policy_threshold_duration"></a> [sql\_memory\_events\_alert\_policy\_threshold\_duration](#input\_sql\_memory\_events\_alert\_policy\_threshold\_duration) | n/a | `string` | `"900s"` | no |
 | <a name="input_sql_memory_events_threshold_value"></a> [sql\_memory\_events\_threshold\_value](#input\_sql\_memory\_events\_threshold\_value) | n/a | `number` | `0.75` | no |
+| <a name="input_ssl_mode"></a> [ssl\_mode](#input\_ssl\_mode) | n/a | `string` | `"ALLOW_UNENCRYPTED_AND_ENCRYPTED"` | no |
 
 ## Outputs
 
