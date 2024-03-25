@@ -3,6 +3,16 @@ variable "private_network" {
   default = ""
 }
 
+variable "require_ssl" {
+  type    = bool
+  default = false
+}
+
+variable "ssl_mode" {
+  type    = string
+  default = "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
+}
+
 variable "ip_configuration_ipv4_enabled" {
   type    = bool
   default = true

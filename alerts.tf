@@ -4,7 +4,7 @@ resource "google_monitoring_alert_policy" "sql_events" {
   display_name = "SQL Alert"
 
   combiner              = "OR"
-  notification_channels = var.sql_alerts_type == "slack" ? [google_monitoring_notification_channel.sql_slack_channel[0].name] : google_monitoring_notification_channel.sql_email_channel.*.id
+  notification_channels = var.sql_alerts_type == "slack" ? [google_monitoring_notification_channel.sql_slack_channel[0].name] : google_monitoring_notification_channel.sql_email_channel[*].id
 
   conditions {
     display_name = "SQL, instance reached ${var.sql_disk_events_threshold_value} DISK usage"
