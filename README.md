@@ -92,7 +92,6 @@ No modules.
 | <a name="input_record_application_tags"></a> [record\_application\_tags](#input\_record\_application\_tags) | n/a | `bool` | `false` | no |
 | <a name="input_record_client_address"></a> [record\_client\_address](#input\_record\_client\_address) | n/a | `bool` | `false` | no |
 | <a name="input_replica_failover_target"></a> [replica\_failover\_target](#input\_replica\_failover\_target) | n/a | `bool` | `false` | no |
-| <a name="input_require_ssl"></a> [require\_ssl](#input\_require\_ssl) | n/a | `bool` | `false` | no |
 | <a name="input_slack_auth_token"></a> [slack\_auth\_token](#input\_slack\_auth\_token) | n/a | `string` | `"token"` | no |
 | <a name="input_sql_alerts_email_address"></a> [sql\_alerts\_email\_address](#input\_sql\_alerts\_email\_address) | n/a | `list(string)` | <pre>[<br>  "address@example.com"<br>]</pre> | no |
 | <a name="input_sql_alerts_slack_channel_name"></a> [sql\_alerts\_slack\_channel\_name](#input\_sql\_alerts\_slack\_channel\_name) | n/a | `string` | `"sql-alerts"` | no |

@@ -3,11 +3,6 @@ variable "private_network" {
   default = ""
 }
 
-variable "require_ssl" {
-  type    = bool
-  default = false
-}
-
 variable "ssl_mode" {
   type    = string
   default = "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
